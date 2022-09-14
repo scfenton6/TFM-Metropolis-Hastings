@@ -1,12 +1,6 @@
-"""
-Comparison of our three symplectic integrators' performance when approximating
-the path given by the system of ordinary differential equations dq/dt=p, dp/dt=-q,
-whose analytical solution corresponds to the unit circle.
-"""
-
 import numpy as np
 import matplotlib.pyplot as plt
-from symplectic_integrators import *
+from numerical_integrators import *
 
 def U(q):
     return q**2 / 2
@@ -20,9 +14,9 @@ theta = np.linspace(-np.pi, np.pi, 100)
 x =np.sin(theta) 
 y = np.cos(theta)
 
-eul_pos, eul_mom = sample_path(12, gradU, eps, euler, q, p, m)
-eul_m_pos, eul_m_mom = sample_path(12, gradU, eps, euler_mod, q, p, m)
-lf_pos, lf_mom = sample_path(12, gradU, eps, leapfrog, q, p, m)
+eul_pos, eul_mom = sample_path(20, gradU, eps, euler, q, p, m)
+eul_m_pos, eul_m_mom = sample_path(20, gradU, eps, euler_mod, q, p, m)
+lf_pos, lf_mom = sample_path(20, gradU, eps, leapfrog, q, p, m)
 
 plt.plot(x,y, label='analytic solution')
 plt.plot(eul_pos, eul_mom, '--bo', color ='b', label='euler')

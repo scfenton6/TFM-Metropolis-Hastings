@@ -1,23 +1,14 @@
-"""
-Symplectic integrators for approximating Hamiltonian paths. More information can 
-be found in Radford M. Neal's paper "MCMC using Hamiltonian dynamics". Here, gradU is 
-the gradient of the potential energy function U(q) and eps is the step size of the 
-discretization. q, p and m are the position, momentum and mass, respectively. They can 
-either be scalars or numpy arrays, in which case the operations in the body of each 
-numerical integrator are vectorized.
-"""
-
 import numpy as np
 
 def euler(gradU, eps, q, p, m):
-    """One step of the Euler symplectic integrator"""
+    """One step of the explicit Euler integrator"""
     p0 = p
     p = p - eps * gradU(q)  # momentum step
     q = q + eps * (p0 / m)  # position step
     return q, p
 
 def euler_mod(gradU, eps, q, p, m):
-    """One step of the modified Euler symplectic integrator"""
+    """One step of the symplectic Euler integrator"""
     p = p - eps * gradU(q)  # momentum step
     q = q + eps * (p/m)  # use new momentum to update position
     return q, p

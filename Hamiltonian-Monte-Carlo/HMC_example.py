@@ -1,9 +1,3 @@
-"""
-Hamiltonian Monte Carlo algorithm for sampling from the bidimensional 
-distribution with density f(theta)=exp(-20(||theta||-10)^2), whose corresponding 
-potential energy function is U(theta) = -log(f(theta)) = 20(||theta||-10)^2.
-"""
-
 import matplotlib.pyplot as plt
 from HMC import *
 

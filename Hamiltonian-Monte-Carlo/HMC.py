@@ -1,5 +1,5 @@
 import numpy as np
-from symplectic_integrators import *
+from numerical_integrators import *
 
 def HMC_step(U, gradU, eps, L, q, m):
     
